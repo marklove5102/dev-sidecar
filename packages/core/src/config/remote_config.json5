@@ -1,5 +1,10 @@
 // 样例配置，仅作测试用途
 {
+  metaInfo: {
+    version: 202602032238, // 格式是GMT+8的开始编辑时间，固定位数为年月日+时分;一天有1440分钟，够用了；这就是个number,可以用来比较，别加引号
+    updateLog: "样例配置,适配元信息规范", // 我真的不觉得这个字段有多大必要
+    id: "internal-test",
+  },
   server: {
     compatible: {
       connect: {

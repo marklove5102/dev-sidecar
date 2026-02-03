@@ -6,7 +6,7 @@ import { colorTheme } from './composables/theme'
 
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       locale: zhCN,
       info: {},
@@ -18,14 +18,14 @@ export default {
     }
   },
   computed: {
-    themeClass () {
+    themeClass() {
       return `theme-${colorTheme.value}`
     },
-    theme () {
+    theme() {
       return colorTheme.value
     },
   },
-  mounted () {
+  mounted() {
     let theme = this.config.app.theme
     if (this.config.app.theme === 'system') {
       theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
@@ -33,7 +33,7 @@ export default {
 
     colorTheme.value = theme
   },
-  created () {
+  created() {
     this.menus = createMenus(this)
     this.config = this.$global.config
     this.$api.info.get().then((ret) => {
@@ -91,19 +91,19 @@ export default {
     })
   },
   methods: {
-    getSearchBarInput () {
+    getSearchBarInput() {
       return this.$refs.searchBar.$el.querySelector('input[type=text]')
     },
-    onSearchBarInputFocus () {
+    onSearchBarInputFocus() {
       this.searchBarIsFocused = true
     },
-    onSearchBarInputBlur () {
+    onSearchBarInputBlur() {
       this.searchBarIsFocused = false
     },
-    onSearchBarInputKeydown () {
+    onSearchBarInputKeydown() {
       clearTimeout(this.searchBarInputKeyupTimeout)
     },
-    onSearchBarInputKeyup (e) {
+    onSearchBarInputKeyup(e) {
       if (!this.$refs.searchBar || e.key === 'Enter' || e.key === 'F3') {
         return
       }
@@ -114,7 +114,7 @@ export default {
         this.$refs.searchBar.previous()
       }, 150)
     },
-    doSearchBarInputFocus () {
+    doSearchBarInputFocus() {
       setTimeout(() => {
         const input = this.getSearchBarInput()
         if (input) {
@@ -122,15 +122,15 @@ export default {
         }
       }, 100)
     },
-    titleClick (item) {
+    titleClick(item) {
       console.log('title click:', item)
     },
-    menuClick (item) {
+    menuClick(item) {
       console.log('menu click:', item)
       window.config.disableSearchBar = false
       this.$router.replace(item.path)
     },
-    async openExternal (url) {
+    async openExternal(url) {
       await this.$api.ipc.openExternal(url)
     },
   },
@@ -140,26 +140,19 @@ export default {
 <template>
   <a-config-provider :locale="locale">
     <div class="ds_layout" :class="themeClass">
-      <SearchBar
-        ref="searchBar"
-        root="#document"
-        highlight-class="search-bar-highlight"
-        selected-class="selected-highlight"
-        :hiden.sync="hideSearchBar"
-        style="inset:auto auto 53px 210px; background-color:#ddd"
-      />
+      <SearchBar ref="searchBar" root="#document" highlight-class="search-bar-highlight"
+        selected-class="selected-highlight" :hiden.sync="hideSearchBar"
+        style="inset:auto auto 53px 210px; background-color:#ddd" />
       <a-layout>
         <a-layout-sider :theme="theme" style="overflow-y: auto">
           <div class="logo" />
           <div class="aside">
-            <a-menu
-              mode="inline"
-              :default-selected-keys="[$route.fullPath]"
-              :default-open-keys="['/plugin']"
-            >
+            <a-menu mode="inline" :default-selected-keys="[$route.fullPath]" :default-open-keys="['/plugin']">
               <template v-for="(item) of menus">
-                <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.path" @titleClick="titleClick(item)">
-                  <span slot="title"><a-icon :type="item.icon ? item.icon : 'file'" /><span>{{ item.title }}</span></span>
+                <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.path"
+                  @titleClick="titleClick(item)">
+                  <span slot="title"><a-icon :type="item.icon ? item.icon : 'file'" /><span>{{ item.title
+                      }}</span></span>
                   <a-menu-item v-for="(sub) of item.children" :key="sub.path" @click="menuClick(sub)">
                     <a-icon :type="sub.icon ? sub.icon : 'file'" /> {{ sub.title }}
                   </a-menu-item>
@@ -179,7 +172,9 @@ export default {
           </a-layout-content>
           <a-layout-footer>
             <div class="footer">
-              ©2020-2025 docmirror.cn by <a @click="openExternal('https://github.com/greper')">Greper</a>, <a @click="openExternal('https://github.com/wangliang181230')">WangLiang</a>, <a @click="openExternal('https://github.com/cute-omega')">CuteOmega</a>  <span>{{ info.version }}</span>
+              ©2020-2026 docmirror.cn by <a @click="openExternal('https://github.com/greper')">Greper</a>, <a
+                @click="openExternal('https://github.com/wangliang181230')">WangLiang</a>, <a
+                @click="openExternal('https://github.com/cute-omega')">CuteOmega</a> <span>{{ info.version }}</span>
             </div>
           </a-layout-footer>
         </a-layout>
@@ -192,21 +187,26 @@ export default {
 body {
   height: 100%;
 }
+
 .ds_layout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   height: 100%;
+
   .ant-layout-has-sider {
     border: 1px solid #eee;
   }
+
   .ant-layout-sider-children {
     border-right: 1px solid #eee;
   }
+
   .ant-layout {
     height: 100%;
   }
+
   .logo {
     padding: 5px;
     border-bottom: #eee solid 1px;
@@ -216,17 +216,20 @@ body {
     background-repeat: no-repeat;
     background-position: 5px center;
   }
+
   .ant-layout-footer {
     padding: 10px;
     text-align: center;
     border-top: #d6d4d4 solid 1px;
   }
+
   .ant-menu-inline,
   .ant-menu-vertical,
   .ant-menu-vertical-left {
     border: 0;
   }
 }
+
 .search-bar-highlight {
   background-color: #ef0fff;
   color: #fdfdfd;

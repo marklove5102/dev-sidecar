@@ -2,15 +2,20 @@
 import path from 'node:path'
 import configLoader from './local-config-loader.js'
 
-function getRootCaCertPath () {
+function getRootCaCertPath() {
   return path.join(configLoader.getUserBasePath(), '/dev-sidecar.ca.crt')
 }
 
-function getRootCaKeyPath () {
+function getRootCaKeyPath() {
   return path.join(configLoader.getUserBasePath(), '/dev-sidecar.ca.key.pem')
 }
 
 const defaultConfig = {
+  metaInfo: {
+    version: 202602032238, // 格式是GMT+8的开始编辑时间，固定位数为年月日+时分;一天有1440分钟，够用了；这就是个number,可以用来比较，别加引号
+    updateLog: "2.0.2的内置配置,需要等待与2.0.0.3官方配置同步",
+    id: "internal"
+  },
   app: {
     mode: 'default',
     autoStart: {
@@ -278,10 +283,10 @@ const defaultConfig = {
         // google cdn
         'www.google.com': {
           '/recaptcha/.*': { proxy: 'www.recaptcha.net' },
-        // '.*': {
-        //   proxy: 'gg.docmirror.top/_yxorp',
-        //   desc: '呀，被你发现了，偷偷的用，别声张'
-        // }
+          // '.*': {
+          //   proxy: 'gg.docmirror.top/_yxorp',
+          //   desc: '呀，被你发现了，偷偷的用，别声张'
+          // }
         },
         'www.gstatic.com': {
           '/recaptcha/.*': { proxy: 'www.recaptcha.net' },
@@ -715,7 +720,7 @@ const defaultConfig = {
 
         // Pixiv
         '*.pixiv.net': {
-        // 以下为 `cdn-origin.pixiv.net` 域名的IP
+          // 以下为 `cdn-origin.pixiv.net` 域名的IP
           '210.140.139.154': true,
           '210.140.139.157': true,
           '210.140.139.160': true,

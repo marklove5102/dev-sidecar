@@ -75,7 +75,7 @@ module.exports = defineConfig({
         productName: 'dev-sidecar',
         // eslint-disable-next-line no-template-curly-in-string
         artifactName: 'DevSidecar-${version}-${arch}.${ext}',
-        copyright: 'Copyright © 2020-2025 Greper, WangLiang, CuteOmega',
+        copyright: 'Copyright © 2020-2026 Greper, WangLiang, CuteOmega',
         nsis: {
           oneClick: false,
           perMachine: true,
@@ -128,7 +128,7 @@ module.exports = defineConfig({
           // url: 'http://dev-sidecar.docmirror.cn/update/preview/',
         },
       },
-      chainWebpackMainProcess (config) {
+      chainWebpackMainProcess(config) {
         config.entry('mitmproxy').add(path.join(__dirname, 'src/bridge/mitmproxy.js'))
       },
     },
