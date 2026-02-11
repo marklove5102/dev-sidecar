@@ -83,6 +83,7 @@ module.exports = defineConfig({
           allowToChangeInstallationDirectory: true,
         },
         win: {
+          artifactName: '${productName}-${version}-windows.${ext}',
           icon: 'build/icons/',
           target: [
             {
@@ -93,6 +94,7 @@ module.exports = defineConfig({
           // requestedExecutionLevel: 'highestAvailable', // 加了这个无法开机自启
         },
         linux: {
+          artifactName: '${productName}-${version}-linux.${ext}',
           icon: 'build/mac/',
           target: [
             {
@@ -115,6 +117,7 @@ module.exports = defineConfig({
           category: 'System',
         },
         mac: {
+          artifactName: '${productName}-${version}-macos.${ext}',
           icon: './build/mac/icon.icns',
           target: {
             target: 'dmg',
