@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Box, useInput} from 'ink';
-import SearchBar from './components/SearchBar.jsx';
-import Sidebar from './components/Sidebar.jsx';
-import Content from './components/Content.jsx';
-import Footer from './components/Footer.jsx';
+import SearchBar from './components/SearchBar.js';
+import Sidebar from './components/Sidebar.js';
+import Content from './components/Content.js';
+import Footer from './components/Footer.js';
 import {menus} from './components/menuData.js';
 
 export default function App() {
@@ -11,11 +11,12 @@ export default function App() {
 	const [focusId, setFocusId] = useState('sidebar'); // 'sidebar' | 'search' | 'content'
 
 	useInput((input, key) => {
-		if (input === '\t') {
+		if (key.tab) {
 			// Tab to switch focus
 			setFocusId(prev => {
-				if (prev === 'sidebar') return 'search';
-				if (prev === 'search') return 'content'; // Or stick to sidebar <-> search
+				if (prev === 'sidebar') return 'content';
+				if (prev === 'content') return 'footer';
+				if (prev === 'footer') return 'search';
 				return 'sidebar';
 			});
 		}
@@ -33,17 +34,23 @@ export default function App() {
 				}}
 			/>
 
-			<Box marginTop={1}>
-				<Sidebar
-					items={items}
-					isFocused={focusId === 'sidebar'}
-					onSelect={p => setPath(p)}
-				/>
-				<Box marginLeft={2} flexGrow={1}>
-					<Content path={path} isFocused={focusId === 'content'} />
+			<Box marginTop={1} flexDirection="column">
+				<Box flexDirection="row">
+					<Sidebar
+						items={items}
+						isFocused={focusId === 'sidebar'}
+						onSelect={p => setPath(p)}
+					/>
+					<Box marginLeft={2} flexGrow={1} flexDirection="column">
+						<Content path={path} isFocused={focusId === 'content'} />
+					</Box>
 				</Box>
 
-				<Footer version={process.env.npm_package_version || 'dev'} />
+				<Footer
+					version={process.env.npm_package_version || 'dev'}
+					stars={0}
+					isFocused={focusId === 'footer'}
+				/>
 			</Box>
 		</Box>
 	);

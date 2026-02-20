@@ -12,13 +12,26 @@ export default function Sidebar({items = [], onSelect, isFocused = true}) {
 		<Box
 			flexDirection="column"
 			width={theme.spacing.sidebarWidth}
-			paddingRight={theme.spacing.padding}
-			borderStyle={isFocused ? 'round' : undefined}
-			borderColor={theme.colors.accent}
+			paddingX={1}
+			borderStyle="single"
+			borderRight={true}
+			borderLeft={false}
+			borderTop={false}
+			borderBottom={false}
+			borderColor={isFocused ? theme.colors.accent : 'gray'}
 		>
-			<Box marginBottom={1}>
+			<Box
+				marginBottom={1}
+				borderStyle="single"
+				borderBottom={true}
+				borderTop={false}
+				borderLeft={false}
+				borderRight={false}
+				borderColor={isFocused ? theme.colors.accent : 'gray'}
+				{...(isFocused ? {backgroundColor: theme.colors.accent} : {})}
+			>
 				<Text color={theme.colors.logo} bold>
-					DOCMIRROR
+					Dev Sidecar - 开发者边车
 				</Text>
 			</Box>
 			<SelectInput

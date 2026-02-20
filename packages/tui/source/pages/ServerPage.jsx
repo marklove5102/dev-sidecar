@@ -13,22 +13,22 @@ export default function ServerPage() {
 	return (
 		<Box flexDirection="column">
 			<Text bold color={theme.colors.primary}>
-				Server Status
+				服务状态
 			</Text>
 			<Box marginTop={1} flexDirection="column">
 				<Text>
-					Status: <Text color={theme.colors.accent}>{stats.uptime}</Text>
+					状态: <Text color={theme.colors.accent}>{stats.uptime}</Text>
 				</Text>
 				<Text>
-					Requests: <Text color={theme.colors.muted}>{stats.requests}</Text>
+					请求: <Text color={theme.colors.muted}>{stats.requests}</Text>
 				</Text>
 				<Text>
-					Errors: <Text color={theme.colors.muted}>{stats.errors}</Text>
+					错误: <Text color={theme.colors.muted}>{stats.errors}</Text>
 				</Text>
 			</Box>
 			<Box marginTop={1}>
 				<Text color={theme.colors.muted}>
-					(Real-time statistics not available in TUI mode yet)
+					(实时统计信息在 TUI 模式下暂不可用)
 				</Text>
 			</Box>
 		</Box>

@@ -9,11 +9,16 @@ export default function SearchBar({onSubmit, isFocused = false}) {
 	return (
 		<Box
 			marginBottom={1}
-			borderStyle={isFocused ? 'round' : undefined}
-			borderColor={theme.colors.accent}
+			borderStyle={isFocused ? 'round' : 'single'}
+			borderColor={isFocused ? theme.colors.accent : 'gray'}
 			paddingX={1}
 		>
-			<Text color={theme.colors.muted}>Search: </Text>
+			<Text
+				color={theme.colors.muted}
+				backgroundColor={isFocused ? theme.colors.accent : undefined}
+			>
+				搜索:{' '}
+			</Text>
 			<TextInput value={value} onChange={setValue} focus={isFocused} />
 		</Box>
 	);

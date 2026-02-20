@@ -1,11 +1,11 @@
 import React from 'react';
 import {Box} from 'ink';
-import IndexPage from '../pages/IndexPage.jsx';
-import HelpPage from '../pages/HelpPage.jsx';
-import PluginPage from '../pages/PluginPage.jsx';
-import ProxyPage from '../pages/ProxyPage.jsx';
-import ServerPage from '../pages/ServerPage.jsx';
-import SettingPage from '../pages/SettingPage.jsx';
+import IndexPage from '../pages/IndexPage.js';
+import HelpPage from '../pages/HelpPage.js';
+import PluginPage from '../pages/PluginPage.js';
+import ProxyPage from '../pages/ProxyPage.js';
+import ServerPage from '../pages/ServerPage.js';
+import SettingPage from '../pages/SettingPage.js';
 import {theme} from '../style/theme.js';
 
 export default function Content({path, isFocused = false}) {
@@ -26,8 +26,8 @@ export default function Content({path, isFocused = false}) {
 			paddingLeft={theme.spacing.padding}
 			flexDirection="column"
 			flexGrow={1}
-			borderStyle={isFocused ? 'round' : undefined}
-			borderColor={theme.colors.accent}
+			borderStyle={isFocused ? 'round' : 'single'}
+			borderColor={isFocused ? theme.colors.accent : 'gray'}
 		>
 			{renderByPath()}
 		</Box>

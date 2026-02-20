@@ -14,7 +14,7 @@ export default function PluginPage() {
 	return (
 		<Box flexDirection="column">
 			<Text bold color={theme.colors.primary}>
-				Plugin Management
+				插件管理
 			</Text>
 			<Box marginTop={1} flexDirection="column">
 				{plugins.map((plugin, index) => (

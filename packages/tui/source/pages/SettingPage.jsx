@@ -12,7 +12,7 @@ export default function SettingPage() {
 	return (
 		<Box flexDirection="column">
 			<Text bold color={theme.colors.primary}>
-				Application Settings
+				设置
 			</Text>
 			<Box marginTop={1} flexDirection="column">
 				{settings.map(s => (
@@ -23,7 +23,7 @@ export default function SettingPage() {
 			</Box>
 			<Box marginTop={1}>
 				<Text color={theme.colors.muted}>
-					Most settings are configured via user_config.json5
+					更多设置请编辑 ~/user_config.json5 文件
 				</Text>
 			</Box>
 		</Box>

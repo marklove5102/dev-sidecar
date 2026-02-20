@@ -7,15 +7,14 @@ const cli = meow(`
 		Usage
 		  $ tui
 
-		Options
-			--name  Your name
+		Description
+		  DevSidecar CLI Dashboard
 
-		Examples
-		  $ tui --name=Jane
-		  Hello, Jane
+		Controls
+		  Use arrow keys to navigate.
+		  Use Enter to select.
+		  Use Tab to switch focus between Sidebar, Search and Content.
 	`, {
   importMeta: import.meta
 });
-render(/*#__PURE__*/React.createElement(App, {
-  name: cli.flags.name
-}));
+render(/*#__PURE__*/React.createElement(App, null));

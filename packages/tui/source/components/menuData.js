@@ -1,6 +1,6 @@
 export const menus = [
-  { label: 'Home', value: '/home' },
-  { label: 'Plugins', value: '/plugin' },
-  { label: 'Settings', value: '/settings' },
-  { label: 'Help', value: '/help' },
+  { label: '主页', value: '/home' },
+  { label: '插件', value: '/plugin' },
+  { label: '设置', value: '/settings' },
+  { label: '帮助', value: '/help' },
 ]

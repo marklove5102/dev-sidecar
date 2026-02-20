@@ -6,9 +6,10 @@ export const theme = {
         muted: 'gray',
         logo: 'cyan',
         text: 'white',
+        background: 'black',
     },
     spacing: {
-        sidebarWidth: 30,
+        sidebarWidth: 20,
         padding: 1,
     },
 }
